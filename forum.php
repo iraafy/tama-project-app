@@ -25,7 +25,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 	<!-- Link CSS -->
-	<link rel="stylesheet" href="css/forum.css">
+	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">	
@@ -70,12 +70,27 @@
 	</nav>
 	<!-- CLOSE NAVBAR -->
 
-	<br><br><br><br>
+	<!-- <br><br><br><br> -->
 	<h2 align="center" style="color: white;">
 		<b>Online Chat</b>	
 	</h2>
 	<br>
 	<div class="container-fluid">
+		<div class="row">
+			<div class="card shadow">
+				<div class="row p-2">
+					<div class="col-lg-6 col-sm-12 d-flex align-items-center justify-content-center">
+						<h1 class="text-color-primary fw-bold">
+							Forum Diskusi<br> <span class="text-black-50 fs-4 fw-normal"></span>
+						</h1>
+					</div>
+					<div class="col-lg-6 col-sm-12">
+						<img src="assets/img/male.png" width="100%" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<br><br><br><br>
 		<div class="row">
 		<div class="col-lg-2 col-sm-12"></div>
 			<div class="col-lg-8 col-sm-12">
