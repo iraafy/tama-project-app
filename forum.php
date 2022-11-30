@@ -37,39 +37,36 @@
 </head>
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav fixed-top" style="background-color: black !important">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-				<img src="assets/logoo.png" width="120px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="index.php">
+				<iconify-icon inline icon="fluent-emoji:robot" class="fs-2"></iconify-icon>
 			</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-5">
 					<li class="nav-item">
-                        <a class="nav-link" href="index.php">
-                            <span class="iconify-inline" data-icon="bi:shop"></span>&nbsp;
-                            Home
-                        </a>
+						<a class="nav-link" href="index.php#about">About Us</a>
 					</li>
-					
 					<li class="nav-item">
-						<a class="nav-link" href="profile.php"> 
-							<span class="iconify-inline" data-icon="gg:profile"></span>&nbsp;
-							<?php
-								if(!isset($_SESSION["login"])) {
-									echo "Account";
-								} else {
-									echo $_COOKIE['user'];
-								}
-							?>
-						</a>
+						<a class="nav-link" href="index.php#feature">Our Feature</a>
 					</li>
-                </ul>
-            </div>
-        </div>
+					<?php if (!isset($_SESSION["login"])) { ?>
+						<li class="nav-item">
+							<a class="nav-link" href="login.php">Login</a>
+						</li>
+					<?php } else { ?>
+						<li class="nav-item">
+							<a class="nav-link" href="logout.php">
+								<iconify-icon inline icon="clarity:logout-line" style="color: #592c75;"></iconify-icon> Logout
+							</a>
+						</li>
+					<?php } ?>
+				</ul>
+			</div>
+		</div>
 	</nav>
 	<!-- CLOSE NAVBAR -->
 
@@ -83,16 +80,16 @@
 		<div class="col-lg-2 col-sm-12"></div>
 			<div class="col-lg-8 col-sm-12">
 				<form method="POST" id="chat_form">
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<input type="text" name="chat_name" id="chat_name" class="form-control" placeholder="Enter Name" value="<?php echo $_COOKIE['user']; ?>" disabled/>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<textarea name="chat_content" id="chat_content" class="form-control" placeholder="Enter chat" rows="5"></textarea>
 					</div>
 					<div class="form-group">
 						<input type="hidden" name="chat_id" id="chat_id" value="0" />
 						<br>
-						<input type="submit" name="submit" id="submit" class="flex btn" style="background-color: rosybrown;" value="submit" />
+						<input type="submit" name="submit" id="submit" class="flex btn" style="background-color: #592C75; color:white;" value="submit" />
 					</div>
 				</form>
 				<span id="chat_message"></span>
@@ -155,5 +152,6 @@
 		});
 	</script>
 	<script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@
 
 	<div class="container mt-5">
 		<br><br><br><br>
-        <h1 class="text-center">Rekomendasi PPL</h1>
+        <h1 class="text-center">TOPIK SKRIPSI</h1>
         <br>
 		<div class="row">
 			<div class="col-4">

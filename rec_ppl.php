@@ -23,10 +23,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-5">
 					<li class="nav-item">
-						<a class="nav-link" href="#about">About Us</a>
+						<a class="nav-link" href="index.php#about">About Us</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#feature">Our Feature</a>
+						<a class="nav-link" href="index.php#feature">Our Feature</a>
 					</li>
 					<?php if (isset($_SESSION["login"])) { ?>
 						<li class="nav-item">

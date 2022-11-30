@@ -14,7 +14,7 @@
 				<div class="card-header">By <b>'.$row["chat_sender_name"].'</b> on '.$row["date"].'</div>
 				<div class="card-body">'.$row["chat"].'</div>
 				<div class="card-footer" align="right">
-					<button type="button" style="background-color: rosybrown; color: white;" class="btn reply" id="'.$row["chat_id"].'">Reply</button>
+					<button type="button" style="background-color: #592C75; color: white;" class="btn reply" id="'.$row["chat_id"].'">Reply</button>
 				</div>
 			</div>
 		';
@@ -49,7 +49,7 @@
 						<div class="card-header">By <b>'.$row["chat_sender_name"].'</b> on '.$row["date"].'</div>
 						<div class="card-body">'.$row["chat"].'</div>
 						<div class="card-footer" align="right">
-							<button type="button" style="background-color: rosybrown; color: white;" class="btn reply" id="'.$row["chat_id"].'">Reply</button>
+							<button type="button" style="background-color: #592C75; color: white;" class="btn reply" id="'.$row["chat_id"].'">Reply</button>
 						</div>
 					</div>
 				';

@@ -25,7 +25,7 @@
 				':chat_sender_name' => $chat_name
 			)
 		);
-		$error = '<label class="text-success"><br>Chat Added<br></label>';
+		$error = '<label class="text-success"><br>Terkirim<br></label>';
 	}
 
 	$data = array(
