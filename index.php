@@ -107,10 +107,12 @@
 				</div>
 			</div>
 			<div class="col-lg-6 col-sm-12 pb-4">
-				<div class="card shadow d-flex justify-content-center align-items-center" style="min-height: 300px;">
-					<img src="assets/img/forum.png" width="40%" class="" alt="forum">
-					<p class="fs-4 text-color-primary pt-4">Forum Diskusi</p>
-				</div>
+				<a href="forum.php">
+					<div class="card shadow d-flex justify-content-center align-items-center" style="min-height: 300px;">
+						<img src="assets/img/forum.png" width="40%" class="" alt="forum">
+						<p class="fs-4 text-color-primary pt-4">Forum Diskusi</p>
+					</div>
+				</a>
 			</div>
 			<div class="col-lg-6 col-sm-12 pb-4">
 				<a href="https://ridzky.itch.io/tesproject">
