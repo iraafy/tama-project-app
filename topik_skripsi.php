@@ -165,7 +165,7 @@ $topic = mysqli_query($conn, 'SELECT * FROM topic');
 		<div id="content" class="p-4">
 			<button class="btn btn-outline-danger hidden-btn mt-2 mb-4 ps-2 pe-2" id="sidebarBtn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="iconify-inline" data-icon="cil:menu"></span>
-				&nbsp;Materi
+				&nbsp;Topik
 			</button>
 			<div class="row">
 				<?php if (isset($_GET['id_topic'])) { ?>
@@ -189,11 +189,9 @@ $topic = mysqli_query($conn, 'SELECT * FROM topic');
 		</div>
 	</div>
 
-
-
 	<button class="btn btn-outline-danger hidden-btn mt-2 mb-4 ps-2 pe-2" id="sidebarBtn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="iconify-inline" data-icon="cil:menu"></span>
-		&nbsp;Materi
+		&nbsp;Topik
 	</button>
 
 	<!-- iconify -->
