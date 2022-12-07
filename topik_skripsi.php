@@ -1,3 +1,8 @@
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'db_tama');
+$topic = mysqli_query($conn, 'SELECT * FROM topic');
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -23,10 +28,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-5">
 					<li class="nav-item">
-						<a class="nav-link" href="#about">About Us</a>
+						<a class="nav-link" href="index.php#about">About Us</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#feature">Our Feature</a>
+						<a class="nav-link" href="index.php#feature">Our Feature</a>
 					</li>
 					<?php if (isset($_SESSION["login"])) { ?>
 						<li class="nav-item">
@@ -44,8 +49,7 @@
 		</div>
 	</nav>
 
-	<div class="container mt-5">
-		<br><br><br><br>
+	<!-- <br><br><br><br>
         <h1 class="text-center">TOPIK SKRIPSI</h1>
         <br>
 		<div class="row">
@@ -139,12 +143,74 @@
             </div>
 		</div>
 
+	</div> -->
+	<div class="wrappers mt-5">
+		<div id="sidebar">
+			<!-- <div class="row"> -->
+			<div class="mt-3 pt-4">
+				<?php foreach ($topic as $keytopic) { ?>
+					<ul>
+						<li>
+							<?php $getID = $keytopic['id_topic'] ?>
+							<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black;">
+								<?= $keytopic['kajian']; ?>
+							</a>
+						</li>
+					</ul>
+				<?php } ?>
+			</div>
+			<!-- </div> -->
+		</div>
+
+		<div id="content" class="p-4">
+			<button class="btn btn-outline-danger hidden-btn mt-2 mb-4 ps-2 pe-2" id="sidebarBtn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="iconify-inline" data-icon="cil:menu"></span>
+				&nbsp;Materi
+			</button>
+			<div class="row">
+				<?php if (isset($_GET['id_topic'])) { ?>
+					<?php foreach ($topic as $keyytopic) { ?>
+						<?php if ($_GET['id_topic'] == $keyytopic['id_topic']) { ?>
+							<div class="row pe-4 mb-5 mt-3">
+								<h4>
+									<?php echo $keyytopic['deskripsi_kajian']; ?>
+								</h4>
+								<!-- <p class="mt-2" style="text-align: justify">
+									<?php echo $keyytopic['content']; ?>
+								</p> -->
+								<!-- <iframe width="100%" height="400" src="https://www.youtube.com/embed/8gS8ecKG63k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+							</div>
+						<?php } ?>
+					<?php } ?>
+				<?php } else { ?>
+					<h5 class="pt-3">Silahkan Pilih Topik</h5>
+				<?php } ?>
+			</div>
+		</div>
 	</div>
 
+
+
+	<button class="btn btn-outline-danger hidden-btn mt-2 mb-4 ps-2 pe-2" id="sidebarBtn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="iconify-inline" data-icon="cil:menu"></span>
+		&nbsp;Materi
+	</button>
+
+	<!-- iconify -->
+	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 	<!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
-	<script>
+	<!-- jQuery CDN - Slim version (=without AJAX) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#sidebarBtn').on('click', function() {
+				$('#sidebar').toggleClass('active');
+				$(this).toggleClass('active');
+			});
+		});
+	</script>
+	<!-- <script>
 		const li = document.querySelectorAll('.nav-item');
 		const sec = document.querySelectorAll('section');
 
@@ -156,7 +222,7 @@
 		}
 		activeMenu();
 		window.addEventListener('scroll', activeMenu);
-	</script>
+	</script> -->
 </body>
 
 </html>

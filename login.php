@@ -89,11 +89,11 @@ if (isset($_POST["login"])) {
             </div>
             <div class="p-4 col-lg col-sm-12 pt-3 mt-5">
                 <h1 class="fw-bold mb-5 text-center text-color-primary">LOGIN</h1>
-                <div class="card shadow">
-                    <?php if (isset($error)) : ?>
-                        <p style="color: red;">user name dan password tidak terdaftar!</p>
-                    <?php endif; ?>
-                </div>
+                <!-- <div class="card pt-2"> -->
+                <?php if (isset($error)) : ?>
+                    <p style="color: red;">User Name dan Password Tidak Terdaftar!</p>
+                <?php endif; ?>
+                <!-- </div> -->
                 <form action="" method="POST">
                     <div class="mb-3">
                         <label for="username">Username:</label>

@@ -38,3 +38,77 @@ a {
 .active::before{
     opacity: 1;
 }
+
+.wrapper {
+    padding: 0;
+}
+
+.wrappers {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  #content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  #sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: white;
+    box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.20);
+    transition: 0.5s;
+  }
+  
+  #sidebar.active {
+    margin-left: -250px;
+  }
+
+.welcome-text {
+    font-size: 3rem;
+}
+
+.welcome-p-text {
+    font-size: 20px;
+}
+
+.hidden-btn {
+    display: none !important;
+  }
+
+@media screen and (max-width: 768px) {
+    .welcome-text {
+        text-align: center;
+        padding-top: 25px;
+    }
+
+    .hidden-btn {
+        display: block !important;
+      }
+
+    .wrappers {
+        margin: 5%;
+    }
+
+    .welcome-p-text {
+        font-size: large;
+        text-align: center;
+        padding-top: 15px;
+    }
+
+    #sidebar {
+        margin-left: -250px;
+      }
+    
+      #sidebar.active {
+        margin-left: 0;
+        transform: none;
+      }
+    
+      .hidden-btn {
+        display: block !important;
+      }
+}
