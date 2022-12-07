@@ -80,23 +80,21 @@
 			</div>
 
 			<div class="row mt-5 pt-5">
-				<div class="row">
-					<div class="col-lg-6 col-sm-12">
-						<img src="assets/img/book.png" width="90%" alt="">
-					</div>
-					<div class="col-lg-6 col-sm-12 d-flex align-items-center justify-content-center">
-						<h2 class="fw-bold text-color-primary" style="text-align: justify;">
-							Informasi Beasiswa <br><br>
-							<span class="text-black mt-4 fw-normal fs-6">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam nemo corporis aspernatur cum est blanditiis, nostrum totam quae porro facilis veniam in tenetur, quaerat natus dolores exercitationem iure reprehenderit sequi. lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam nemo corporis aspernatur cum est blanditiis, nostrum totam quae porro facilis veniam in tenetur.
-							</span>
-						</h2>
-					</div>
+				<div class="col-lg-6 col-sm-12">
+					<img src="assets/img/book.png" width="90%" alt="">
+				</div>
+				<div class="col-lg-6 col-sm-12 d-flex align-items-center justify-content-center">
+					<h2 class="fw-bold text-color-primary centered-text">
+						Informasi Beasiswa <br><br>
+						<span class="text-black mt-4 fw-normal fs-6">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam nemo corporis aspernatur cum est blanditiis, nostrum totam quae porro facilis veniam in tenetur, quaerat natus dolores exercitationem iure reprehenderit sequi. lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam nemo corporis aspernatur cum est blanditiis, nostrum totam quae porro facilis veniam in tenetur.
+						</span>
+					</h2>
 				</div>
 			</div>
 
 			<br><br><br><br>
-			<div class="row mt-5 p-5" id="feature">
+			<div class="row mt-5" id="feature">
 				<h2 class="fw-bold text-color-primary text-center mb-5">
 					Our Feature
 				</h2>

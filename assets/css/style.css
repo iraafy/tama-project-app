@@ -40,7 +40,7 @@ a {
 }
 
 .wrapper {
-    padding: 0;
+    padding: px;
 }
 
 .wrappers {
@@ -79,7 +79,17 @@ a {
     display: none !important;
   }
 
+  .centered-text {
+    text-align: justify;
+  }
+
 @media screen and (max-width: 768px) {
+
+    .centered-text {
+        padding-top: 30px;
+        text-align: center;
+    }
+
     .welcome-text {
         text-align: center;
         padding-top: 25px;
@@ -89,7 +99,7 @@ a {
         display: block !important;
       }
 
-    .wrappers {
+    .wrapper {
         margin: 5%;
     }
 
