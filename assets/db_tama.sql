@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Nov 2022 pada 22.52
+-- Waktu pembuatan: 13 Des 2022 pada 16.04
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 8.0.3
 
@@ -70,8 +70,7 @@ CREATE TABLE `topic` (
   `id_topic` int(11) NOT NULL,
   `kbk` varchar(100) NOT NULL,
   `kajian` varchar(20) NOT NULL,
-  `deskripsi_kajian` varchar(200) NOT NULL,
-  `id_dosen` int(11) NOT NULL
+  `deskripsi_kajian` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -119,8 +118,7 @@ ALTER TABLE `konsul`
 -- Indeks untuk tabel `topic`
 --
 ALTER TABLE `topic`
-  ADD PRIMARY KEY (`id_topic`),
-  ADD KEY `id_dosen` (`id_dosen`);
+  ADD PRIMARY KEY (`id_topic`);
 
 --
 -- Indeks untuk tabel `user`
@@ -156,7 +154,7 @@ ALTER TABLE `konsul`
 -- AUTO_INCREMENT untuk tabel `topic`
 --
 ALTER TABLE `topic`
-  MODIFY `id_topic` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_topic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -174,12 +172,6 @@ ALTER TABLE `user`
 ALTER TABLE `konsul`
   ADD CONSTRAINT `konsul_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `dosen` (`id_dosen`),
   ADD CONSTRAINT `konsul_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
-
---
--- Ketidakleluasaan untuk tabel `topic`
---
-ALTER TABLE `topic`
-  ADD CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `dosen` (`id_dosen`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
