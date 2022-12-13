@@ -18,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 
 
-    $id_topic = $_GET["id"];
+    $id_topic = $_GET["id_topic"];
 
-    $sql = "SELECT * FROM topic WHERE id=$id_topic";
+    $sql = "SELECT * FROM topic WHERE id_topic=$id_topic";
     $result = $connection->query($sql);
    
     $row = $result->fetch_assoc();
@@ -48,7 +48,7 @@ else{
 
         $sql = "UPDATE topic " .
                 "SET kbk = '$kbk', kajian = '$kajian', deskrips_kajian = '$deskripsi_kajian' ".
-                "WHERE id = $id_topic" ;
+                "WHERE id_topic = $id_topic" ;
 
         $result = $connection->query($sql);
 
