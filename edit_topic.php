@@ -1,47 +1,76 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'db_tama');
-$topic = mysqli_query($conn, 'SELECT * FROM topic');
 
+$connection = new mysqli('localhost', 'root', '', 'db_tama');
 
+$id_topic = "";
 $kbk = "";
 $kajian = "";
 $deskripsi_kajian = "";
+$content = "";
 
 $errorMessage = "";
 $successMessage = "";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    
+    if ( !isset($_GET["id_topic"])) {
+        // header("location: /tama-project-app/table.php");
+        exit;
+    }
+
+
+    $id_topic = $_GET["id_topic"];
+
+    $sql = "SELECT * FROM topic WHERE id_topic=$id_topic";
+    $result = $connection->query($sql);
+   
+    $row = $result->fetch_assoc();
+
+    if (!$row) {
+        // header("location: /tama-project-app/table.php");
+        exit;
+    }
+
+    $kbk = $row["kbk"];
+    $kajian = $row["kajian"];
+    $deskripsi_kajian = $row["deskripsi_kajian"];
+    $content = $row["content"];
+}
+else{
+
+    $id_topic = $_POST["id_topic"];
     $kbk = $_POST["kbk"];
     $kajian = $_POST["kajian"];
     $deskripsi_kajian = $_POST["deskripsi_kajian"];
+    $content = $_POST["content"];
 
-    do {
-        if ( empty($kbk) || empty($kajian) || empty($deskripsi_kajian)) {
+    
+        if ( empty($kbk) || empty($kajian) || empty($deskripsi_kajian) || empty($content)) {
             $errorMessage = "All The Fields Are Required";
-            break;
         }
 
-        $sql = "INSERT INTO topic (kbk, kajian, deskripsi_kajian) " .
-                "VALUES ('$kbk', '$kajian', '$deskripsi_kajian') ";
+        $sql = "UPDATE topic " .
+                " SET kbk = '$kbk', kajian = '$kajian', deskripsi_kajian = '$deskripsi_kajian' , content = '$content' ".
+                " WHERE id_topic = $id_topic" ;
 
-        $result = $conn->query($sql);
-        
+        $result = $connection->query($sql);
+
+        print_r($result);
+
         if (!$result) {
-            $errorMessage = "invalid query: " . $conn->error;
+            $errorMessage = "Invalid Query: ";
         }
 
-        $kbk = "";
-        $kajian = "";
-        $deskripsi_kajian = "";
+        $successMessage = "Updated Correctly";
 
-        $successMessage = "Add Correctly";
+        header("location: /tama-project-app/table_topic.php");
+        exit;
 
-        header("location: /tama-project-app/table.php");
-    }while (false);
 }
 
 
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -53,6 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<!-- Style CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -60,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="container my-5">
-        <h2>Create New Topic</h2>
+        <h2>Edit Topic</h2>
 
         <?php
         if ( !empty($errorMessage)){
@@ -74,10 +105,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ?>
 
         <form method="post">
+            <input type="hidden" name="id_topic" value="<?php echo $id_topic; ?>">
             <div class="row mb-3">
                 <label for="" class="col-sm-3 col-form-label">Nama KBK</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="kbk" value="<?php echo $kbk; ?>">
+                    <select name="kbk" class="form-control">
+                        <option selected><?php echo $kbk; ?></option>
+                        <option value="<?php echo $kbk; ?>">Data</option>
+                        <option value="<?php echo $kbk; ?>">RPL</option>
+                        <option value="<?php echo $kbk; ?>">Multimedia</option>
+                    </select>
                 </div> 
             </div>
             <div class="row mb-3">
@@ -89,8 +126,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row mb-3">
                 <label for="" class="col-sm-3 col-form-label">Deskripsi Kajian</label>
                 <div class="col-sm-6">
-                    <textarea type="text" class="form-control" rows="5" name="deskripsi_kajian" value="<?php echo $deskripsi_kajian; ?>"></textarea>
+                    <input type="text" class="form-control" name="deskripsi_kajian" value="<?php echo $deskripsi_kajian; ?>">
                 </div> 
+            </div>
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Content</label>
+                <div class="col-sm-6">
+                    <input id="content" type="hidden" name="content">
+                    <trix-editor input="content"><?php echo"$content" ?></trix-editor>
+                </div>
             </div>
 
             <?php

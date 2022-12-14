@@ -1,6 +1,13 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'db_tama');
 $topic = mysqli_query($conn, 'SELECT * FROM topic');
+$kbk_data =  mysqli_query($conn, 'SELECT kajian, id_topic FROM topic where kbk="Data" ');
+$des_data = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kbk="Data" ');
+$kbk_rpl =  mysqli_query($conn, 'SELECT kajian, id_topic FROM topic where kbk="RPL" ');
+$des_rpl = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kbk="Rpl" ');
+$kbk_mulmed =  mysqli_query($conn, 'SELECT kajian, id_topic FROM topic where kbk="Multimedia" ');
+$des_mulmed = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kbk="Multimedia" ');
+
 ?>
 
 <!doctype html>
@@ -14,6 +21,9 @@ $topic = mysqli_query($conn, 'SELECT * FROM topic');
 	<link rel="stylesheet" href="assets/css/style.css">
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -148,26 +158,118 @@ $topic = mysqli_query($conn, 'SELECT * FROM topic');
 		<div id="sidebar">
 			<!-- <div class="row"> -->
 			<div class="mt-3 pt-4">
-				<?php foreach ($topic as $keytopic) { ?>
-					<ul>
-						<li>
-							<?php $getID = $keytopic['id_topic'] ?>
-							<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black;">
-								<?= $keytopic['kajian']; ?>
-							</a>
-						</li>
-					</ul>
-				<?php } ?>
+			<h4 style="padding-left: 10px; padding-bottom: 20px"> Topik </h4>
+						
+				<div class="accordion" id="accordion">
+					<div class="accordion-item" id="accordion">
+						<h2 class="accordion-header" id="headingOne">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Data
+						</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+							<div class="accrodion-item" id="inneraccordion">
+								<div class="accordion" id="innerheadingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseOne" aria-expanded="true" aria-controls="innercollapseOne" >
+										<?php foreach ($kbk_data as $keytopic) { ?>
+											<?php $getID = $keytopic['id_topic'] ?>
+												<div class="row">
+													<div class="col-sm-12">
+													<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; ">
+														<?= $keytopic['kajian']; ?>
+													</a>
+													</div>
+												</div>
+										<?php } ?>
+									</button>
+									<div id="innercollapseOne" class="accordion-collapse collapse" aria-labelledby="innerheadingOne" data-bs-parent="#inneraccordion">
+									<div class="accordion-body col" style="padding-left: 20px;">
+									<?php foreach ($des_data as $keytopic) { ?>
+											<?php $getID = $keytopic['id_topic'] ?>
+												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; ">
+													<?= $keytopic['deskripsi_kajian']; ?>
+												</a>
+										<?php } ?>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item" id="accordionTwo">
+						<h2 class="accordion-header" id="headingTwo">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+							RPL
+						</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+							<div class="accrodion-item" id="inneraccrodion">
+								<div class="accordion" id="innerheadingTwo">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseTwo" aria-expanded="true" aria-controls="innercollapseTwo">
+										<?php foreach ($kbk_rpl as $keytopic) { ?>
+											<?php $getID = $keytopic['id_topic'] ?>
+												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; padding: 10px">
+													<?= $keytopic['kajian']; ?>
+												</a>
+										<?php } ?>
+									</button>
+									<div id="innercollapseTwo" class="accordion-collapse collapse" aria-labelledby="innerheadingTwo" data-bs-parent="#inneraccordion">
+									<div class="accordion-body">
+									<?php foreach ($des_rpl as $keytopic) { ?>
+											<?php $getID = $keytopic['id_topic'] ?>
+												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; ">
+													<?= $keytopic['deskripsi_kajian']; ?>
+												</a>
+										<?php } ?>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item" id="accordionThree">
+						<h2 class="accordion-header" id="headingThree">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+							Multimedia
+						</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+							<div class="accrodion-item" id="inneraccrodion">
+								<div class="accordion" id="innerheadingThree">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseThree" aria-expanded="true" aria-controls="innercollapseThree">
+										<?php foreach ($kbk_mulmed as $keytopic) { ?>
+											<?php $getID = $keytopic['id_topic'] ?>
+												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; padding: 10px">
+													<?= $keytopic['kajian']; ?>
+												</a>
+										<?php } ?>
+									</button>
+									<div id="innercollapseThree" class="accordion-collapse collapse" aria-labelledby="innerheadingThree" data-bs-parent="#inneraccordion">
+									<div class="accordion-body">
+									<?php foreach ($des_mulmed as $keytopic) { ?>
+											<?php $getID = $keytopic['id_topic'] ?>
+												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; ">
+													<?= $keytopic['deskripsi_kajian']; ?>
+												</a>
+										<?php } ?>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<!-- </div> -->
 		</div>
 
-		<div id="content" class="p-4">
+		<div id="content" lass="p-4">
 			<button class="btn btn-outline-secondary hidden-btn mt-2 mb-4 ps-4 pe-4" id="sidebarBtn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="iconify-inline" data-icon="cil:menu"></span>
 				&nbsp;Topik
 			</button>
 			<div class="row">
+
 				<?php if (isset($_GET['id_topic'])) { ?>
 					<?php foreach ($topic as $keyytopic) { ?>
 						<?php if ($_GET['id_topic'] == $keyytopic['id_topic']) { ?>
@@ -175,9 +277,9 @@ $topic = mysqli_query($conn, 'SELECT * FROM topic');
 								<h4>
 									<?php echo $keyytopic['deskripsi_kajian']; ?>
 								</h4>
-								<!-- <p class="mt-2" style="text-align: justify">
+								<p class="mt-2" style="text-align: justify">
 									<?php echo $keyytopic['content']; ?>
-								</p> -->
+								</p>
 								<!-- <iframe width="100%" height="400" src="https://www.youtube.com/embed/8gS8ecKG63k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 							</div>
 						<?php } ?>
@@ -206,6 +308,30 @@ $topic = mysqli_query($conn, 'SELECT * FROM topic');
 				$('#sidebar').toggleClass('active');
 				$(this).toggleClass('active');
 			});
+		});
+	</script>
+	<script>
+		$(document).ready(function() {
+		$('.section-title').click(function(e) {
+			// Get current link value
+			var currentLink = $(this).attr('href');
+			if($(e.target).is('.active')) {
+				close_section();
+			}else {
+				close_section();
+			// Add active class to section title
+			$(this).addClass('active');
+			// Display the hidden content
+			$('.accordion ' + currentLink).slideDown(350).addClass('open');
+			}
+		e.preventDefault();
+		});
+			
+		function close_section() {
+			$('.accordion .section-title').removeClass('active');
+			$('.accordion .section-content').removeClass('open').slideUp(350);
+		}
+			
 		});
 	</script>
 	<!-- <script>

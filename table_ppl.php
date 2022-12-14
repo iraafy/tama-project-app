@@ -15,7 +15,7 @@
 <body>
     <div class="container my-5">
         <h2>Lis of Topic</h2>
-        <a class="btn btn-primary" href="/tama-project-app/create.php" role="button">Create Topic</a>
+        <a class="btn btn-primary" href="/tama-project-app/create_topic.php" role="button">Create Topic</a>
         <br/>
         <table class="table">
             <thead>
@@ -40,7 +40,6 @@
                 }
 
                 while($row = $result->fetch_assoc()) {
-                    $linkEdit = "/tama-project-app/edit.php?id=$row[id_topic]";
                     echo "
                     <tr>
                         <td>$row[id_topic]</td>
@@ -48,8 +47,8 @@
                         <td>$row[kajian]</td>
                         <td>$row[deskripsi_kajian]</td>
                         <td>
-                            <a class='btn btn-danger btm-sm' href='edit.php?id=$row[id_topic]'>Edit</a>
-                            <a class='btn btn-danger btm-sm' href='delete.php?id=$row[id_topic]'>Delete</a>
+                            <a class='btn btn-danger btm-sm' href='edit_topic.php?id_topic=$row[id_topic]'>Edit</a>
+                            <a class='btn btn-danger btm-sm' href='delete_topic.php?id_topic=$row[id_topic]'>Delete</a>
                         </td>
                     </tr>
                     ";
