@@ -14,13 +14,8 @@
 <body>
     <div class="container my-5">
         <h2>Lis of Topic</h2>
-<<<<<<< HEAD:table_ppl.php
         <a class="btn btn-primary" href="/tama-project-app/create_topic.php" role="button">Create Topic</a>
         <br/>
-=======
-        <a class="btn btn-primary" href="/tama-project-app/create.php" role="button">Create Topic</a>
-        <br />
->>>>>>> 6f6f74fef5cc338ff0f6544e70f04ae471a071a2:table.php
         <table class="table">
             <thead>
                 <tr>
@@ -43,12 +38,7 @@
                     die("invalid query: " . $connnection->error);
                 }
 
-<<<<<<< HEAD:table_ppl.php
                 while($row = $result->fetch_assoc()) {
-=======
-                while ($row = $result->fetch_assoc()) {
-                    $linkEdit = "/tama-project-app/edit.php?id=$row[id_topic]";
->>>>>>> 6f6f74fef5cc338ff0f6544e70f04ae471a071a2:table.php
                     echo "
                     <tr>
                         <td>$row[id_topic]</td>
@@ -56,13 +46,8 @@
                         <td>$row[kajian]</td>
                         <td>$row[deskripsi_kajian]</td>
                         <td>
-<<<<<<< HEAD:table_ppl.php
                             <a class='btn btn-danger btm-sm' href='edit_topic.php?id_topic=$row[id_topic]'>Edit</a>
                             <a class='btn btn-danger btm-sm' href='delete_topic.php?id_topic=$row[id_topic]'>Delete</a>
-=======
-                            <a type='button' data-bs-toggle='modal' data-bs-target='#exampleModal-$row[id_topic]' class='btn btn-danger btm-sm' href='edit.php?id=$row[id_topic]'>Edit</a>
-                            <a class='btn btn-danger btm-sm' href='delete.php?id_topic=$row[id_topic]'>Delete</a>
->>>>>>> 6f6f74fef5cc338ff0f6544e70f04ae471a071a2:table.php
                         </td>
                     </tr>
                     ";
