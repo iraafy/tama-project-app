@@ -2,6 +2,16 @@
     color: rgb(89, 64, 117) !important;
 }
 
+body{
+  counter-reset: my-sec-counter;
+}
+
+.counter::before {
+  /* Increment "my-sec-counter" by 1 */
+  counter-increment: my-sec-counter;
+  content: counter(my-sec-counter) ". ";
+}
+
 a {
     text-decoration: none !important;
 }

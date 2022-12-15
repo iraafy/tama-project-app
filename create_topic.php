@@ -97,8 +97,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row mb-3">
                 <label for="" class="col-sm-3 col-form-label">Kajian</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="kajian" value="<?php echo $kajian; ?>">
-                </div> 
+                <select name="kajian" class="form-control">
+                    <option selected>Choose...</option>
+                    <option value="Big Data">Big Data</option>
+                    <option value="Machine Learning">RPL</option>
+                    <option value="Deep Learning">Deep Learning</option>
+                    
+                    <option value="Design Mobile App">Design Mobile App</option>
+                    <option value="Design Web App">Design Web App</option>
+                    <option value="How To Make Mobile Games">How To Make Mobile Games</option>
+                    
+                    <option value="Create AR">Big Data</option>
+                    <option value="Create Logo">Create Logo</option>
+                    <option value="Photo Editing">Photo Editing</option>
+                </select>
+                </div>
             </div>
             <div class="row mb-3">
                 <label for="" class="col-sm-3 col-form-label">Deskripsi Kajian</label>

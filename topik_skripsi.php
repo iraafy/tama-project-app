@@ -1,12 +1,22 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'db_tama');
 $topic = mysqli_query($conn, 'SELECT * FROM topic');
+
 $kbk_data =  mysqli_query($conn, 'SELECT kajian, id_topic FROM topic where kbk="Data" ');
-$des_data = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kbk="Data" ');
+$des_data = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kajian="Big Data" ');
+$des_data2 = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kajian="Machine Learning" ');
+$des_data3 = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kajian="Deep Learning" ');
+
 $kbk_rpl =  mysqli_query($conn, 'SELECT kajian, id_topic FROM topic where kbk="RPL" ');
-$des_rpl = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kbk="Rpl" ');
+$des_rpl = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kajian="Design Mobile App" ');
+$des_rpl2 = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kajian="Design Web App" ');
+$des_rpl3 = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kajian="How To Make Mobile Games" ');
+
 $kbk_mulmed =  mysqli_query($conn, 'SELECT kajian, id_topic FROM topic where kbk="Multimedia" ');
 $des_mulmed = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kbk="Multimedia" ');
+$des_mulmed = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kajian="Create AR" ');
+$des_mulmed2 = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kajian="Create Logo" ');
+$des_mulmed3 = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic where kajian="Photo Editing" ');
 
 ?>
 
@@ -167,61 +177,104 @@ $des_mulmed = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic 
 							Data
 						</button>
 						</h2>
-						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+						<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
 							<div class="accrodion-item" id="inneraccordion">
 								<div class="accordion" id="innerheadingOne">
-									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseOne" aria-expanded="true" aria-controls="innercollapseOne" >
-										<?php foreach ($kbk_data as $keytopic) { ?>
-											<?php $getID = $keytopic['id_topic'] ?>
-												<div class="row">
-													<div class="col-sm-12">
-													<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; ">
-														<?= $keytopic['kajian']; ?>
-													</a>
-													</div>
-												</div>
-										<?php } ?>
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseOne" aria-expanded="true" aria-controls="innercollapseOne" style="padding-left: 30px">
+										Machine Learning
 									</button>
 									<div id="innercollapseOne" class="accordion-collapse collapse" aria-labelledby="innerheadingOne" data-bs-parent="#inneraccordion">
-									<div class="accordion-body col" style="padding-left: 20px;">
-									<?php foreach ($des_data as $keytopic) { ?>
-											<?php $getID = $keytopic['id_topic'] ?>
-												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; ">
-													<?= $keytopic['deskripsi_kajian']; ?>
-												</a>
-										<?php } ?>
+										<div class="accordion-body row" style="padding-left: 20px;">
+									
+											<?php foreach ($des_data as $keytopic) { ?>
+												<?php $getID = $keytopic['id_topic'] ?>
+													<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="font-weight:500; color: black; font-size: 1rem; margin-left: 15px; margin-bottom: 10px">
+														<?= $keytopic['deskripsi_kajian']; ?>
+													</a>
+											<?php } ?>
+										</div>
 									</div>
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseOneB" aria-expanded="true" aria-controls="innercollapseOne" style="padding-left: 30px">
+										Big Data
+									</button>	
+									<div id="innercollapseOneB" class="accordion-collapse collapse" aria-labelledby="innerheadingOne" data-bs-parent="#inneraccordion">
+										<div class="accordion-body row" style="padding-left: 20px;">
+									
+											<?php foreach ($des_data2 as $keytopic) { ?>
+												<?php $getID = $keytopic['id_topic'] ?>
+													<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="font-weight:500; color: black; font-size: 1rem; margin-left: 15px; margin-bottom: 10px">
+														<?= $keytopic['deskripsi_kajian']; ?>
+													</a>
+											<?php } ?>
+										</div>
 									</div>
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseOneC" aria-expanded="true" aria-controls="innercollapseOne" style="padding-left: 30px">
+										Deep Learning
+									</button>	
+									<div id="innercollapseOneC" class="accordion-collapse collapse" aria-labelledby="innerheadingOne" data-bs-parent="#inneraccordion">
+										<div class="accordion-body row" style="padding-left: 20px;">
+									
+											<?php foreach ($des_data3 as $keytopic) { ?>
+												<?php $getID = $keytopic['id_topic'] ?>
+													<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="font-weight:500; color: black; font-size: 1rem; margin-left: 15px; margin-bottom: 10px">
+														<?= $keytopic['deskripsi_kajian']; ?>
+													</a>
+											<?php } ?>
+										</div>
+									</div>			
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="accordion-item" id="accordionTwo">
 						<h2 class="accordion-header" id="headingTwo">
-						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 							RPL
 						</button>
 						</h2>
-						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
 							<div class="accrodion-item" id="inneraccrodion">
 								<div class="accordion" id="innerheadingTwo">
-									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseTwo" aria-expanded="true" aria-controls="innercollapseTwo">
-										<?php foreach ($kbk_rpl as $keytopic) { ?>
-											<?php $getID = $keytopic['id_topic'] ?>
-												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; padding: 10px">
-													<?= $keytopic['kajian']; ?>
-												</a>
-										<?php } ?>
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseTwo" aria-expanded="false" aria-controls="innercollapseTwo" style="padding-left: 30px;">
+										Design Mobile App
 									</button>
 									<div id="innercollapseTwo" class="accordion-collapse collapse" aria-labelledby="innerheadingTwo" data-bs-parent="#inneraccordion">
-									<div class="accordion-body">
-									<?php foreach ($des_rpl as $keytopic) { ?>
-											<?php $getID = $keytopic['id_topic'] ?>
-												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; ">
-													<?= $keytopic['deskripsi_kajian']; ?>
-												</a>
-										<?php } ?>
+										<div class="accordion-body row">
+											<?php foreach ($des_rpl as $keytopic) { ?>
+												<?php $getID = $keytopic['id_topic'] ?>
+														<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="font-weight:500; color: black; font-size: 1rem; margin-left: 15px; margin-bottom: 10px;">
+															<?= $keytopic['deskripsi_kajian']; ?>
+														</a>
+											<?php } ?>
+										</div>
 									</div>
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseTwoB" aria-expanded="true" aria-controls="innercollapseTwo" style="padding-left: 30px">
+										Design Web App
+									</button>	
+									<div id="innercollapseTwoB" class="accordion-collapse collapse" aria-labelledby="innerheadingTwo" data-bs-parent="#inneraccordion">
+										<div class="accordion-body row" style="padding-left: 20px;">
+									
+											<?php foreach ($des_rpl2 as $keytopic) { ?>
+												<?php $getID = $keytopic['id_topic'] ?>
+													<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="font-weight:500; color: black; font-size: 1rem; margin-left: 15px; margin-bottom: 10px">
+														<?= $keytopic['deskripsi_kajian']; ?>
+													</a>
+											<?php } ?>
+										</div>
+									</div>
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseTwoC" aria-expanded="true" aria-controls="innercollapseTwo" style="padding-left: 30px">
+										How To Make Mobile Games
+									</button>	
+									<div id="innercollapseTwoC" class="accordion-collapse collapse" aria-labelledby="innerheadingTwo" data-bs-parent="#inneraccordion">
+										<div class="accordion-body row" style="padding-left: 20px;">
+									
+											<?php foreach ($des_rpl3 as $keytopic) { ?>
+												<?php $getID = $keytopic['id_topic'] ?>
+													<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="font-weight:500; color: black; font-size: 1rem; margin-left: 15px; margin-bottom: 10px">
+														<?= $keytopic['deskripsi_kajian']; ?>
+													</a>
+											<?php } ?>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -229,30 +282,53 @@ $des_mulmed = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic 
 					</div>
 					<div class="accordion-item" id="accordionThree">
 						<h2 class="accordion-header" id="headingThree">
-						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 							Multimedia
 						</button>
 						</h2>
-						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
 							<div class="accrodion-item" id="inneraccrodion">
 								<div class="accordion" id="innerheadingThree">
-									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseThree" aria-expanded="true" aria-controls="innercollapseThree">
-										<?php foreach ($kbk_mulmed as $keytopic) { ?>
-											<?php $getID = $keytopic['id_topic'] ?>
-												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; padding: 10px">
-													<?= $keytopic['kajian']; ?>
-												</a>
-										<?php } ?>
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseThree" aria-expanded="false" aria-controls="innercollapseThree" style="padding-left: 30px">
+										Create AR
 									</button>
 									<div id="innercollapseThree" class="accordion-collapse collapse" aria-labelledby="innerheadingThree" data-bs-parent="#inneraccordion">
-									<div class="accordion-body">
-									<?php foreach ($des_mulmed as $keytopic) { ?>
-											<?php $getID = $keytopic['id_topic'] ?>
-												<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="color: black; ">
-													<?= $keytopic['deskripsi_kajian']; ?>
-												</a>
-										<?php } ?>
+										<div class="accordion-body">
+											<?php foreach ($des_mulmed as $keytopic) { ?>
+												<?php $getID = $keytopic['id_topic'] ?>
+														<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="font-weight:500; color: black; font-size: 1rem; margin-left: 15px; margin-bottom: 10px">
+															<?= $keytopic['deskripsi_kajian']; ?>
+														</a>
+											<?php } ?>
+										</div>
 									</div>
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseThreeB" aria-expanded="true" aria-controls="innercollapseThree" style="padding-left: 30px">
+										Create Logo
+									</button>	
+									<div id="innercollapseThreeB" class="accordion-collapse collapse" aria-labelledby="innerheadingThree" data-bs-parent="#inneraccordion">
+										<div class="accordion-body row" style="padding-left: 20px;">
+									
+											<?php foreach ($des_mulmed2 as $keytopic) { ?>
+												<?php $getID = $keytopic['id_topic'] ?>
+													<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="font-weight:500; color: black; font-size: 1rem; margin-left: 15px; margin-bottom: 10px">
+														<?= $keytopic['deskripsi_kajian']; ?>
+													</a>
+											<?php } ?>
+										</div>
+									</div>
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseThreeC" aria-expanded="true" aria-controls="innercollapseThree" style="padding-left: 30px">
+										Photo Editing
+									</button>	
+									<div id="innercollapseThreeC" class="accordion-collapse collapse" aria-labelledby="innerheadingThree" data-bs-parent="#inneraccordion">
+										<div class="accordion-body row" style="padding-left: 20px;">
+									
+											<?php foreach ($des_mulmed2 as $keytopic) { ?>
+												<?php $getID = $keytopic['id_topic'] ?>
+													<a href="topik_skripsi.php?id_topic=<?php echo $getID ?>" style="font-weight:500; color: black; font-size: 1rem; margin-left: 15px; margin-bottom: 10px">
+														<?= $keytopic['deskripsi_kajian']; ?>
+													</a>
+											<?php } ?>
+										</div>
 									</div>
 								</div>
 							</div>

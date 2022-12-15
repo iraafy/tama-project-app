@@ -120,7 +120,18 @@ else{
             <div class="row mb-3">
                 <label for="" class="col-sm-3 col-form-label">Kajian</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="kajian" value="<?php echo $kajian; ?>">
+                    <option selected><?php echo $kajian; ?></option>
+                    <option value="<?php echo $kajian; ?>">Big Data</option>
+                    <option value="<?php echo $kajian; ?>">RPL</option>
+                    <option value="<?php echo $kajian; ?>">Deep Learning</option>
+                    
+                    <option value="<?php echo $kajian; ?>">Design Mobile App</option>
+                    <option value="<?php echo $kajian; ?>">Design Web App</option>
+                    <option value="<?php echo $kajian; ?>">How To Make Games</option>
+                    
+                    <option value="<?php echo $kajian; ?>">Create AR</option>
+                    <option value="<?php echo $kajian; ?>">Create Logo</option>
+                    <option value="<?php echo $kajian; ?>">Photo Editing</option>
                 </div> 
             </div>
             <div class="row mb-3">
