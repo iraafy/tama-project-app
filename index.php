@@ -1,3 +1,21 @@
+<?php 
+$conn = new mysqli('localhost', 'root', '', 'db_tama');
+ 
+// Check connection
+if (mysqli_connect_errno()){
+	echo "Koneksi database gagal : " . mysqli_connect_error();
+}
+
+
+session_start();
+$username = $_POST['username'];
+$password = $_POST['password'];
+$login = mysqli_query($conn,"select * from user where username='$username' and password='$password'");
+$data = mysqli_fetch_assoc($login);
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -20,6 +38,36 @@
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+
+			
+			<?php if ($_SESSION['role'] == "admin") { ?>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item pe-5">
+						<a class="nav-link" href="table_topic.php">Admin</a>
+					</li>
+					<li class="nav-item pe-5">
+						<a class="nav-link" href="#about">About Us</a>
+					</li>
+					<li class="nav-item pe-5">
+						<a class="nav-link" href="#feature">Our Feature</a>
+					</li>
+					<?php if (isset($_SESSION["login"])) { ?>
+						<li class="nav-item">
+							<a class="nav-link" href="login.php">Login</a>
+						</li>
+					<?php } else { ?>
+						<li class="nav-item">
+							<a class="nav-link" href="logout.php">
+								<iconify-icon inline icon="clarity:logout-line" style="color: #592c75;"></iconify-icon> Logout
+							</a>
+						</li>
+					<?php } ?>
+				</ul>
+			</div>
+
+			<?php } else {?>
+
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 					<li class="nav-item pe-5">
@@ -41,6 +89,7 @@
 					<?php } ?>
 				</ul>
 			</div>
+			<?php } ?>
 		</div>
 	</nav>
 

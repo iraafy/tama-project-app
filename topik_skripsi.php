@@ -289,7 +289,7 @@ $des_mulmed3 = mysqli_query($conn, 'SELECT deskripsi_kajian, id_topic FROM topic
 						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
 							<div class="accrodion-item" id="inneraccrodion">
 								<div class="accordion" id="innerheadingThree">
-									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseThree" aria-expanded="false" aria-controls="innercollapseThree" style="padding-left: 30px">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#innercollapseThree" aria-expanded="false" aria-controls="innercollapseThree" style="padding-left: 30px"									>
 										Create AR
 									</button>
 									<div id="innercollapseThree" class="accordion-collapse collapse" aria-labelledby="innerheadingThree" data-bs-parent="#inneraccordion">
