@@ -8,11 +8,14 @@ if (mysqli_connect_errno()){
 
 
 session_start();
-$username = $_POST['username'];
-$password = $_POST['password'];
-$login = mysqli_query($conn,"select * from user where username='$username' and password='$password'");
-$data = mysqli_fetch_assoc($login);
+if (isset($_POST["login"])) {
+	$username = $_POST['username'];
+	$password = $_POST['password'];
 
+
+	$login = mysqli_query($conn,"select * from user where username='$username' and password='$password'");
+	$data = mysqli_fetch_assoc($login);
+}
 ?>
 
 

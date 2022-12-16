@@ -9,16 +9,19 @@ if (mysqli_connect_errno()){
 session_start();
 
 require 'assets/php/function.php';
- 
-// menangkap data yang dikirim dari form login
-$username = $_POST['username'];
-$password = $_POST['password'];
+
+if (isset($_POST["login"])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+
  
  
 // menyeleksi data user dengan username dan password yang sesuai
 $login = mysqli_query($conn,"select * from user where username='$username' and password='$password'");
 // menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($login);
+}
  
 // cek apakah username dan password di temukan pada database
 if($cek > 0){
